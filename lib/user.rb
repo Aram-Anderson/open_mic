@@ -22,4 +22,12 @@ class User
     listener.jokes = @jokes
   end
 
+  def learn_routine(file)
+    CSV.foreach(file) do |row|
+      row.split(", ")
+      temp_joke = Joke.new(row[0], row[1], row[2])
+      learn(temp_joke)
+    end
+  end
+
 end
